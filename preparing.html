@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A Room Being Prepared — The Star Croft</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="fade-in">
+  <!-- One page serves every unfinished room. The room's name, picture,
+       and description are filled in by house.js from the ?room= in the address. -->
+  <main class="preparing">
+    <div class="room-view" aria-hidden="true"></div>
+    <div class="sign">
+      <p class="moniker">The Star Croft</p>
+      <h1 data-room-name>A Room of the House</h1>
+      <div class="rule"></div>
+      <p class="note">This room is being prepared. Its doors will open soon.</p>
+      <p class="about" data-room-about></p>
+      <a class="button-door" href="entry.html" data-door>Return to the Entry Hall</a>
+    </div>
+  </main>
+  <script src="house.js"></script>
+</body>
+</html>

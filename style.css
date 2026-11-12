@@ -1,0 +1,261 @@
+/* ==========================================================
+   THE STAR CROFT — house style
+   One stylesheet for every room. Colors and fonts live in the
+   :root block below; change them there and the whole house follows.
+   ========================================================== */
+
+:root {
+  --black: #0b0a08;
+  --umber: #17130d;
+  --gold: #c9a24a;
+  --gold-bright: #e4c272;
+  --gold-dim: #8a6f33;
+  --cream: #efe6d2;
+  --serif: "EB Garamond", Garamond, Georgia, serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { background: var(--black); }
+body {
+  min-height: 100vh;
+  background: var(--black);
+  color: var(--cream);
+  font-family: var(--serif);
+  font-size: 1.125rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--gold); }
+a:hover, a:focus-visible { color: var(--gold-bright); }
+:focus-visible { outline: 1px solid var(--gold-bright); outline-offset: 3px; }
+
+/* Every page fades in from black, as if eyes adjusting to candlelight */
+.fade-in { animation: fadeIn 1.6s ease-out both; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+body.leaving { animation: fadeOut 0.7s ease-in forwards; }
+@keyframes fadeOut { to { opacity: 0; } }
+
+.moniker {
+  font-size: 0.8rem; letter-spacing: 0.35em; text-transform: uppercase;
+  color: var(--gold);
+}
+.rule {
+  width: 6rem; height: 1px; margin: 1.5rem auto;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+.button-door {
+  display: inline-block; padding: 0.65rem 1.7rem;
+  border: 1px solid var(--gold); color: var(--gold);
+  text-decoration: none; letter-spacing: 0.15em; text-transform: uppercase;
+  font-size: 0.95rem; background: rgba(11,10,8,0.35);
+  transition: background 0.3s, color 0.3s;
+  cursor: pointer; font-family: var(--serif);
+}
+.button-door:hover, .button-door:focus-visible { background: var(--gold); color: var(--black); }
+
+/* ----------------------------------------------------------
+   THE THRESHOLD (index.html)
+   ---------------------------------------------------------- */
+.threshold {
+  position: relative; min-height: 100vh; overflow: hidden;
+  display: flex; align-items: center; justify-content: center; text-align: center;
+  padding: 2rem 1.25rem;
+}
+.threshold .galaxy {
+  position: absolute; left: 50%; top: 50%;
+  width: max(115vmax, 900px); aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  background: url("threshold-galaxy.webp") center / cover no-repeat;
+  opacity: 0; animation: galaxyIn 3.5s ease-out 0.3s forwards, turn 600s linear infinite;
+}
+@keyframes galaxyIn { to { opacity: 0.85; } }
+@keyframes turn { from { transform: translate(-50%,-50%) rotate(0deg); } to { transform: translate(-50%,-50%) rotate(-360deg); } }
+.threshold .veil {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at center, rgba(11,10,8,0.15) 0%, rgba(11,10,8,0.75) 70%, var(--black) 100%);
+}
+.threshold .sign { position: relative; z-index: 1; }
+.threshold h1 {
+  font-weight: 400; font-size: clamp(2.8rem, 9vw, 5.5rem); line-height: 1.05;
+  color: var(--gold-bright); letter-spacing: 0.03em;
+  text-shadow: 0 0 30px rgba(0,0,0,0.8);
+  opacity: 0; animation: fadeIn 2s ease-out 1.4s forwards;
+}
+.threshold .byline {
+  margin-top: 0.8rem; font-size: clamp(1rem, 2.6vw, 1.3rem); color: var(--cream);
+  letter-spacing: 0.08em; text-shadow: 0 0 20px rgba(0,0,0,0.9);
+  opacity: 0; animation: fadeIn 2s ease-out 2.2s forwards;
+}
+.threshold .enter { margin-top: 2.6rem; opacity: 0; animation: fadeIn 1.5s ease-out 3s forwards; }
+.credit {
+  position: absolute; bottom: 0.8rem; left: 0; right: 0; z-index: 1;
+  font-size: 0.75rem; color: var(--gold-dim); text-align: center; padding: 0 1rem;
+}
+
+/* ----------------------------------------------------------
+   THE ENTRY HALL (entry.html)
+   Desktop: welcome | the hall | directory.  Phone: stacked.
+   ---------------------------------------------------------- */
+.hall-page {
+  display: grid;
+  grid-template-columns: minmax(14rem, 1fr) auto minmax(14rem, 1fr);
+  gap: clamp(1.5rem, 3vw, 3rem);
+  align-items: center;
+  min-height: 100vh;
+  padding: 2rem clamp(1rem, 3vw, 3rem);
+  background: radial-gradient(ellipse at center, var(--umber) 0%, var(--black) 75%);
+}
+.hall-page header, .hall-page nav { max-width: 22rem; }
+.hall-page header { justify-self: end; text-align: right; }
+.hall-page nav { justify-self: start; }
+.hall-page h1 {
+  font-weight: 400; font-size: clamp(2rem, 3vw, 2.8rem); line-height: 1.1;
+  color: var(--gold-bright); margin: 0.5rem 0 0.3rem;
+}
+.hall-page .byline { color: var(--gold); font-size: 1rem; letter-spacing: 0.05em; }
+.hall-page header .rule { margin: 1.3rem 0 1.3rem auto; }
+.welcome p { margin-bottom: 0.9rem; }
+.welcome .lead { font-style: italic; font-size: 1.3rem; color: var(--gold-bright); }
+.hint { font-size: 0.95rem; color: var(--gold-dim); font-style: italic; }
+
+/* The hall itself: image with hotspots positioned in percentages,
+   so they stay on the right objects at any screen size */
+.hall {
+  position: relative;
+  height: min(94vh, 1402px);
+  aspect-ratio: 1122 / 1402;
+  box-shadow: 0 0 60px rgba(0,0,0,0.9), 0 0 0 1px rgba(201,162,74,0.25);
+}
+.hall img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.hall::after { /* gentle vignette */
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  box-shadow: inset 0 0 80px rgba(0,0,0,0.65);
+}
+.lanterns { /* the faintest candle flicker over the whole hall */
+  position: absolute; inset: 0; pointer-events: none; z-index: 1;
+  background: radial-gradient(ellipse at 50% 12%, rgba(255,190,90,0.10), transparent 45%);
+  animation: flicker 5s ease-in-out infinite;
+}
+@keyframes flicker {
+  0%,100% { opacity: 0.9; } 18% { opacity: 0.6; } 22% { opacity: 1; }
+  48% { opacity: 0.75; } 70% { opacity: 1; } 84% { opacity: 0.7; }
+}
+
+.spot {
+  position: absolute; z-index: 2; display: block;
+  border-radius: 3px; outline: none;
+  transition: box-shadow 0.35s, background 0.35s;
+}
+button.spot { background: transparent; padding: 0; font: inherit; color: inherit; }
+.spot:hover, .spot:focus-visible, .spot.active {
+  background: rgba(228,194,114,0.08);
+  box-shadow: 0 0 0 1px rgba(228,194,114,0.7), 0 0 28px rgba(228,194,114,0.45);
+}
+.spot.glimmer { animation: glimmer 2.4s ease-in-out 2; }
+@keyframes glimmer {
+  0%,100% { box-shadow: 0 0 0 0 rgba(228,194,114,0); }
+  50% { box-shadow: 0 0 0 1px rgba(228,194,114,0.6), 0 0 26px rgba(228,194,114,0.4); }
+}
+.bubble {
+  position: absolute; left: 50%; bottom: calc(100% + 10px);
+  transform: translateX(-50%) translateY(4px);
+  width: max-content; max-width: 15rem;
+  padding: 0.55rem 0.85rem; text-align: center;
+  background: rgba(11,10,8,0.94); border: 1px solid var(--gold-dim);
+  color: var(--cream); font-size: 0.95rem; line-height: 1.35;
+  opacity: 0; pointer-events: none; transition: opacity 0.3s, transform 0.3s;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.7);
+}
+.bubble strong { display: block; color: var(--gold-bright); font-weight: 500; }
+.bubble em { display: block; color: var(--gold); font-size: 0.85rem; margin-top: 0.2rem; }
+.spot.below .bubble { bottom: auto; top: calc(100% + 10px); }
+.spot.edge-left .bubble { left: 0; transform: translateY(4px); }
+.spot.edge-right .bubble { left: auto; right: 0; transform: translateY(4px); }
+.spot:hover .bubble, .spot:focus-visible .bubble, .spot.active .bubble {
+  opacity: 1; transform: translateX(-50%) translateY(0);
+}
+.spot.edge-left:hover .bubble, .spot.edge-left:focus-visible .bubble, .spot.edge-left.active .bubble,
+.spot.edge-right:hover .bubble, .spot.edge-right:focus-visible .bubble, .spot.edge-right.active .bubble {
+  transform: translateY(0);
+}
+
+/* The brass directory board */
+.directory h2 {
+  font-weight: 400; font-size: 0.85rem; letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 1rem;
+}
+.directory ul { list-style: none; border-left: 1px solid var(--gold-dim); }
+.directory li a, .directory li button {
+  display: block; padding: 0.4rem 0 0.4rem 1rem; width: 100%; text-align: left;
+  color: var(--cream); text-decoration: none; font-size: 1.15rem;
+  background: none; border: 0; font-family: var(--serif); cursor: pointer;
+  transition: color 0.25s, padding 0.25s;
+}
+.directory li a:hover, .directory li a:focus-visible,
+.directory li button:hover, .directory li button:focus-visible { color: var(--gold-bright); padding-left: 1.35rem; }
+.directory li small { display: block; color: var(--gold-dim); font-size: 0.85rem; font-style: italic; }
+.directory .extras { margin-top: 1.4rem; }
+
+.site-foot {
+  grid-column: 1 / -1; text-align: center; font-size: 0.8rem; color: var(--gold-dim);
+  padding-top: 0.5rem;
+}
+
+/* The guest book (Substack sign-up), opened as a dialog */
+dialog.guestbook {
+  margin: auto; border: 1px solid var(--gold-dim); background: var(--umber);
+  color: var(--cream); padding: 1.8rem 1.5rem 1.4rem; max-width: 34rem; width: calc(100% - 2rem);
+  text-align: center;
+}
+dialog.guestbook::backdrop { background: rgba(0,0,0,0.75); }
+dialog.guestbook h2 { font-weight: 400; color: var(--gold-bright); font-size: 1.8rem; }
+dialog.guestbook p { margin: 0.6rem 0 1rem; }
+dialog.guestbook iframe { width: 100%; height: 320px; border: 1px solid #2c2519; background: #fff; }
+dialog.guestbook .close { margin-top: 1rem; }
+
+/* ----------------------------------------------------------
+   A ROOM BEING PREPARED (preparing.html)
+   ---------------------------------------------------------- */
+.preparing {
+  position: relative; min-height: 100vh; overflow: hidden;
+  display: flex; align-items: center; justify-content: center; text-align: center;
+  padding: 2rem 1.25rem;
+}
+.preparing .room-view {
+  position: absolute; inset: -20px;
+  background-position: center; background-size: cover;
+  filter: blur(6px) brightness(0.35) sepia(0.2);
+}
+.preparing .sign {
+  position: relative; max-width: 34rem; padding: 2.4rem 2rem;
+  background: rgba(11,10,8,0.72); border: 1px solid var(--gold-dim);
+}
+.preparing h1 { font-weight: 400; font-size: clamp(2rem, 6vw, 3rem); color: var(--gold-bright); line-height: 1.15; }
+.preparing .note { font-style: italic; font-size: 1.25rem; }
+.preparing .about { color: var(--cream); opacity: 0.85; margin-top: 0.4rem; }
+.preparing .button-door { margin-top: 1.8rem; }
+
+/* ----------------------------------------------------------
+   Phones and narrow screens: everything stacks
+   ---------------------------------------------------------- */
+@media (max-width: 960px) {
+  .hall-page { grid-template-columns: 1fr; justify-items: center; padding: 1.5rem 1rem 2rem; gap: 1.8rem; }
+  .hall-page header, .hall-page nav { justify-self: center; text-align: center; max-width: 34rem; width: 100%; }
+  .hall-page header .rule { margin: 1.2rem auto; }
+  .hall { height: auto; width: min(100%, 560px); }
+  .hall-page header { order: 1; }
+  .hall { order: 2; }
+  .hall-page nav { order: 3; }
+  .site-foot { order: 4; }
+  .directory ul { border-left: 0; }
+  .directory li a, .directory li button { text-align: center; padding-left: 0; }
+  .directory li a:hover, .directory li button:hover { padding-left: 0; }
+  .bubble { max-width: 11rem; font-size: 0.85rem; }
+}
+
+/* Visitors who ask their device for less motion get a still house */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .threshold .galaxy { opacity: 0.85; }
+  .threshold h1, .threshold .byline, .threshold .enter { opacity: 1; }
+}

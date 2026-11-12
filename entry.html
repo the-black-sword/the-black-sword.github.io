@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Entry Hall — The Star Croft</title>
+  <meta name="description" content="The Entry Hall of The Star Croft, the house of Marcus Alden Meredith. Choose a room: the Observatory, the Library, the Naturalist's Room, the Music Room, the Dragon's Study, the Scriptorium, or the Stoic Forum.">
+  <meta property="og:title" content="The Entry Hall — The Star Croft">
+  <meta property="og:image" content="https://the-black-sword.github.io/share.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="fade-in">
+  <div class="hall-page">
+
+    <!-- LEFT: the welcome -->
+    <header class="welcome">
+      <p class="moniker">The Star Croft</p>
+      <h1>Marcus Alden Meredith</h1>
+      <p class="byline">The Black Sword</p>
+      <div class="rule"></div>
+      <p class="lead">Welcome to the House of the Starry Nights.</p>
+      <p>My mother called her house in the country <em>The Star Croft</em>; I called it the House of the Starry Nights. This house carries both names, in her honor.</p>
+      <p>It is a house of rooms for the things I love: the stars, the living world, music, books, and the long work of writing.</p>
+      <p class="hint">Wander as you like. The portraits will show you the way.</p>
+    </header>
+
+    <!-- CENTER: the hall itself. Each hotspot is placed in percentages of the picture. -->
+    <main class="hall" aria-label="The Entry Hall">
+      <img src="entry-hall.webp" width="1122" height="1402"
+           alt="A candlelit Arts and Crafts entry hall with a curving oak staircase, stained-glass windows, a grandfather clock, and portraits of Marcus Aurelius, Leonardo da Vinci, Beethoven, Caroline Herschel, and Maria Sibylla Merian.">
+      <div class="lanterns" aria-hidden="true"></div>
+
+      <a class="spot edge-left" href="preparing.html?room=stoic-forum"
+         style="left:4.4%; top:12.5%; width:11.6%; height:27.5%;">
+        <span class="bubble"><strong>Marcus Aurelius</strong>To the Stoic Forum<em>The emperor who wrote the Meditations keeps this door.</em></span>
+      </a>
+
+      <a class="spot edge-left" href="preparing.html?room=dragons-study"
+         style="left:4.4%; top:41%; width:11.6%; height:22%;">
+        <span class="bubble"><strong>Leonardo da Vinci</strong>To the Dragon&rsquo;s Study<em>The polymath guards the room where the fiction lives.</em></span>
+      </a>
+
+      <a class="spot edge-right" href="preparing.html?room=music"
+         style="left:84%; top:12.8%; width:12%; height:27.2%;">
+        <span class="bubble"><strong>Beethoven</strong>To the Music Room</span>
+      </a>
+
+      <a class="spot edge-right" href="preparing.html?room=observatory"
+         style="left:84%; top:41%; width:12%; height:19.5%;">
+        <span class="bubble"><strong>Caroline Herschel</strong>To the Observatory<em>Comet hunter, and the first woman paid for her work in science.</em></span>
+      </a>
+
+      <a class="spot edge-right" href="preparing.html?room=naturalist"
+         style="left:84%; top:61.8%; width:12%; height:15.2%;">
+        <span class="bubble"><strong>Maria Sibylla Merian</strong>To the Naturalist&rsquo;s Room<em>She painted the metamorphosis of butterflies from life.</em></span>
+      </a>
+
+      <a class="spot" href="preparing.html?room=library"
+         style="left:53%; top:52%; width:24%; height:34%;">
+        <span class="bubble"><strong>The Grand Staircase</strong>Up to the Library</span>
+      </a>
+
+      <a class="spot" href="preparing.html?room=scriptorium"
+         style="left:45%; top:59%; width:7.5%; height:15%;">
+        <span class="bubble"><strong>The Far Door</strong>To the Scriptorium, where the essays are written</span>
+      </a>
+
+      <a class="spot" href="https://theblacksword.substack.com/archive"
+         style="left:33.5%; top:57.5%; width:5.5%; height:19%;">
+        <span class="bubble"><strong>The Clock</strong>Lately in the house: the newest essays</span>
+      </a>
+
+      <button type="button" class="spot edge-left" data-guestbook
+         style="left:2.5%; top:69%; width:24.5%; height:24%; border:0; cursor:pointer;">
+        <span class="bubble"><strong>The Guest Book</strong>Sign it, and new essays will find their way to you</span>
+      </button>
+    </main>
+
+    <!-- RIGHT: the brass directory board (the plain way through the house) -->
+    <nav class="directory" aria-label="Rooms of the house">
+      <h2>The Rooms</h2>
+      <ul>
+        <li><a href="preparing.html?room=observatory">The Observatory<small>the stars and the supernova hunt</small></a></li>
+        <li><a href="preparing.html?room=naturalist">The Naturalist&rsquo;s Room<small>the cabinet of curiosities</small></a></li>
+        <li><a href="preparing.html?room=library">The Library<small>the reading life</small></a></li>
+        <li><a href="preparing.html?room=scriptorium">The Scriptorium<small>the essays</small></a></li>
+        <li><a href="preparing.html?room=dragons-study">The Dragon&rsquo;s Study<small>the fiction</small></a></li>
+        <li><a href="preparing.html?room=music">The Music Room<small>the playing life</small></a></li>
+        <li><a href="preparing.html?room=stoic-forum">The Stoic Forum<small>the quiet room</small></a></li>
+      </ul>
+      <ul class="extras">
+        <li><button type="button" data-guestbook>Sign the Guest Book<small>new essays by email</small></button></li>
+        <li><a href="https://theblacksword.substack.com">Read on Substack<small>theblacksword.substack.com</small></a></li>
+      </ul>
+    </nav>
+
+    <p class="site-foot">&copy; 2026 Marcus Alden Meredith &middot; <a href="index.html">Return to the Threshold</a></p>
+  </div>
+
+  <!-- The guest book: Substack's own sign-up form, shown in a small window -->
+  <dialog class="guestbook" aria-labelledby="gb-title">
+    <h2 id="gb-title">The Guest Book</h2>
+    <p>Leave your name in the book, and new essays from The Star Croft will arrive by email.</p>
+    <iframe title="Subscribe to Marcus Alden Meredith on Substack" data-src="https://theblacksword.substack.com/embed" loading="lazy"></iframe>
+    <div><button type="button" class="button-door close">Close the book</button></div>
+  </dialog>
+
+  <script src="house.js"></script>
+</body>
+</html>

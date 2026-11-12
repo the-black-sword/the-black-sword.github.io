@@ -3,76 +3,35 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Marcus Alden Meredith — The Black Sword</title>
-  <meta name="description" content="The website of Marcus Alden Meredith, The Black Sword: essays, natural history, the observatory, and fiction. The house is being prepared.">
+  <title>The Star Croft — Marcus Alden Meredith</title>
+  <meta name="description" content="The Star Croft: the house of Marcus Alden Meredith, The Black Sword. Essays, natural history, the observatory, music, books, and fiction.">
+  <meta property="og:title" content="The Star Croft — Marcus Alden Meredith">
+  <meta property="og:description" content="Welcome to the House of the Starry Nights.">
+  <meta property="og:image" content="https://the-black-sword.github.io/share.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --black: #0b0a08;
-      --gold: #c9a24a;
-      --gold-dim: #8a6f33;
-      --cream: #efe6d2;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { height: 100%; }
-    body {
-      background: radial-gradient(ellipse at center, #1a1610 0%, var(--black) 70%);
-      color: var(--cream);
-      font-family: "EB Garamond", Garamond, Georgia, serif;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 2rem 1.25rem;
-    }
-    main { max-width: 38rem; }
-    .rule {
-      width: 6rem; height: 1px; margin: 1.75rem auto;
-      background: linear-gradient(90deg, transparent, var(--gold), transparent);
-    }
-    .moniker {
-      font-size: 0.85rem; letter-spacing: 0.35em; text-transform: uppercase;
-      color: var(--gold);
-    }
-    h1 {
-      font-weight: 400; font-size: clamp(2.2rem, 7vw, 3.4rem);
-      letter-spacing: 0.02em; margin-top: 0.75rem; color: var(--cream);
-    }
-    .notice { font-size: 1.3rem; font-style: italic; color: var(--cream); opacity: 0.9; }
-    blockquote {
-      font-size: 1.15rem; font-style: italic; color: var(--gold);
-      line-height: 1.6;
-    }
-    blockquote cite {
-      display: block; margin-top: 0.4rem; font-size: 0.9rem;
-      font-style: normal; color: var(--gold-dim); letter-spacing: 0.08em;
-    }
-    a.door {
-      display: inline-block; margin-top: 2.25rem;
-      padding: 0.7rem 1.6rem; border: 1px solid var(--gold);
-      color: var(--gold); text-decoration: none;
-      font-size: 1.05rem; letter-spacing: 0.08em;
-      transition: background 0.3s, color 0.3s;
-    }
-    a.door:hover, a.door:focus { background: var(--gold); color: var(--black); }
-    footer { margin-top: 3rem; font-size: 0.85rem; color: var(--gold-dim); }
-  </style>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preload" as="image" href="entry-hall.webp">
 </head>
 <body>
-  <main>
-    <p class="moniker">The Black Sword</p>
-    <h1>Marcus Alden Meredith</h1>
-    <div class="rule"></div>
-    <p class="notice">The house is being prepared. The doors will open soon.</p>
-    <div class="rule"></div>
-    <blockquote>
-      To see the Universe in a grain of sand,<br>and Eternity in an hour.
-      <cite>— after William Blake</cite>
-    </blockquote>
-    <a class="door" href="https://theblacksword.substack.com">Read the essays on Substack</a>
-    <footer>&copy; 2026 Marcus Alden Meredith</footer>
+  <!-- THE THRESHOLD: the galaxy, the name of the house, and one door -->
+  <main class="threshold">
+    <div class="galaxy" aria-hidden="true"></div>
+    <div class="veil" aria-hidden="true"></div>
+
+    <div class="sign">
+      <p class="moniker">Welcome to</p>
+      <h1>The Star Croft</h1>
+      <p class="byline">Marcus Alden Meredith &middot; The Black Sword</p>
+      <div class="enter">
+        <a class="button-door" href="entry.html" data-door>Enter</a>
+      </div>
+    </div>
+
+    <p class="credit">Our galaxy as no one has ever seen it: an artist&rsquo;s reconstruction from Spitzer infrared data. Image: NASA/JPL-Caltech/R. Hurt (SSC/Caltech)</p>
   </main>
+
+  <script src="house.js"></script>
 </body>
 </html>
