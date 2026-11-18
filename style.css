@@ -259,3 +259,88 @@ dialog.guestbook .close { margin-top: 1rem; }
   .threshold .galaxy { opacity: 0.85; }
   .threshold h1, .threshold .byline, .threshold .enter { opacity: 1; }
 }
+
+/* ==========================================================
+   ROOMS AND STUDY PAGES (Observatory and beyond)
+   ========================================================== */
+.crumbs { font-size: 0.85rem; color: var(--gold-dim); letter-spacing: 0.05em; }
+.crumbs a { color: var(--gold); text-decoration: none; }
+.crumbs a:hover { color: var(--gold-bright); }
+.crumbs span { margin: 0 0.4rem; }
+
+/* A room: landscape render with hotspots, text and directory below */
+.room-page { min-height: 100vh; padding: 1.5rem clamp(1rem, 3vw, 3rem) 2rem;
+  background: radial-gradient(ellipse at top, var(--umber) 0%, var(--black) 70%); }
+.room-head { text-align: center; margin: 0.6rem 0 1.4rem; }
+.room-head h1 { font-weight: 400; color: var(--gold-bright); font-size: clamp(2rem, 4vw, 3rem); line-height: 1.1; margin-top: 0.3rem; }
+.room-view-wrap { position: relative; max-width: 1150px; margin: 0 auto; aspect-ratio: 1402 / 1122;
+  box-shadow: 0 0 60px rgba(0,0,0,0.9), 0 0 0 1px rgba(201,162,74,0.25); }
+.room-view-wrap img { width: 100%; height: 100%; display: block; object-fit: cover; }
+.room-view-wrap::after { content: ""; position: absolute; inset: 0; pointer-events: none; box-shadow: inset 0 0 80px rgba(0,0,0,0.6); }
+.room-below { max-width: 1150px; margin: 1.8rem auto 0; display: grid; grid-template-columns: 3fr 2fr; gap: 2.5rem; }
+.room-below .intro p { margin-bottom: 0.9rem; }
+.room-below .intro .lead { font-style: italic; font-size: 1.25rem; color: var(--gold-bright); }
+
+/* A study page: readable column */
+.study { max-width: 980px; margin: 0 auto; padding: 1.5rem clamp(1rem, 3vw, 2rem) 3rem; }
+.study header { margin: 0.8rem 0 1.8rem; }
+.study h1 { font-weight: 400; color: var(--gold-bright); font-size: clamp(2rem, 4.5vw, 2.9rem); line-height: 1.1; margin: 0.3rem 0 0.6rem; }
+.study h2 { font-weight: 400; color: var(--gold); font-size: 1.6rem; margin: 2.4rem 0 0.4rem; }
+.study h2 + .note { margin-bottom: 1rem; }
+.study p { margin-bottom: 0.9rem; max-width: 46rem; }
+.study .lead { font-style: italic; font-size: 1.25rem; color: var(--cream); }
+.note { color: var(--gold-dim); font-style: italic; font-size: 0.98rem; }
+.study a { text-underline-offset: 3px; }
+
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.2rem; margin-top: 1rem; }
+.card { background: rgba(23,19,13,0.75); border: 1px solid rgba(201,162,74,0.25); display: flex; flex-direction: column; }
+.card img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: center top; display: block; border-bottom: 1px solid rgba(201,162,74,0.2); }
+.card .body { padding: 0.9rem 1rem 1.1rem; }
+.card h3 { font-weight: 500; color: var(--gold-bright); font-size: 1.2rem; line-height: 1.2; }
+.card .meta { color: var(--gold); font-size: 0.9rem; font-style: italic; margin: 0.15rem 0 0.5rem; }
+.card p { font-size: 1rem; margin-bottom: 0.5rem; }
+.card.text-only { padding: 0; }
+.tag { display: inline-block; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--black);
+  background: var(--gold); padding: 0.1rem 0.45rem; margin-top: 0.3rem; }
+.tag.dim { background: transparent; color: var(--gold-dim); border: 1px solid var(--gold-dim); }
+
+.wide-figure { margin: 1rem 0 0.5rem; }
+.wide-figure img { width: 100%; max-height: 80vh; object-fit: contain; background: #000; border: 1px solid rgba(201,162,74,0.25); }
+figcaption { font-size: 0.9rem; color: var(--gold-dim); font-style: italic; margin-top: 0.4rem; }
+
+table.ledger { width: 100%; border-collapse: collapse; margin: 0.8rem 0 1rem; font-size: 1rem; }
+table.ledger th { text-align: left; font-weight: 500; color: var(--gold); border-bottom: 1px solid var(--gold-dim); padding: 0.4rem 0.6rem; }
+table.ledger td { border-bottom: 1px solid rgba(201,162,74,0.15); padding: 0.45rem 0.6rem; vertical-align: top; }
+
+ul.links { list-style: none; margin: 0.6rem 0 1rem; }
+ul.links li { padding: 0.6rem 0; border-bottom: 1px solid rgba(201,162,74,0.15); }
+ul.links li a { font-size: 1.15rem; }
+ul.links li span { display: block; color: var(--cream); opacity: 0.85; font-size: 1rem; }
+
+.paper { border-left: 2px solid var(--gold-dim); padding: 0.2rem 0 0.2rem 1.1rem; margin: 1.2rem 0; }
+.paper h3 { font-weight: 500; color: var(--gold-bright); font-size: 1.2rem; }
+.paper .cite { color: var(--gold); font-style: italic; font-size: 0.95rem; margin: 0.2rem 0 0.6rem; }
+
+/* The SN Hunt gateway: Markarian's Chain behind five doors */
+.gateway { position: relative; min-height: 100vh; overflow: hidden; }
+.gateway .sky { position: absolute; inset: 0; background: url("sn-markarians-chain.webp") center / cover no-repeat; transform: scale(1.04);
+  animation: drift 90s ease-in-out infinite alternate; }
+@keyframes drift { to { transform: scale(1.12) translate(-1.5%, 1%); } }
+.gateway .veil { position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(11,10,8,0.35) 0%, rgba(11,10,8,0.8) 75%, var(--black) 100%); }
+.gateway .inner { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 1.5rem clamp(1rem, 3vw, 2rem) 4rem; }
+.gateway h1 { font-weight: 400; color: var(--gold-bright); font-size: clamp(2.4rem, 6vw, 4rem); line-height: 1.05; text-shadow: 0 0 30px #000; }
+.gateway .lead { max-width: 40rem; font-size: 1.2rem; font-style: italic; text-shadow: 0 0 16px #000; margin: 0.8rem 0 2rem; }
+.doors { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; }
+.door { display: block; text-decoration: none; color: var(--cream); padding: 1.2rem 1.3rem; background: rgba(11,10,8,0.62);
+  border: 1px solid rgba(201,162,74,0.4); backdrop-filter: blur(2px); transition: background 0.3s, border-color 0.3s, transform 0.3s; }
+.door:hover, .door:focus-visible { background: rgba(23,19,13,0.88); border-color: var(--gold-bright); transform: translateY(-2px); color: var(--cream); }
+.door .num { color: var(--gold-dim); font-size: 0.8rem; letter-spacing: 0.3em; }
+.door h2 { font-weight: 400; color: var(--gold-bright); font-size: 1.55rem; margin: 0.15rem 0 0.35rem; }
+.door p { font-size: 1rem; opacity: 0.9; }
+.gateway .credit { position: relative; bottom: auto; margin-top: 2.4rem; text-align: left; padding: 0; }
+
+.page-foot { text-align: center; font-size: 0.85rem; color: var(--gold-dim); padding: 2rem 1rem 1.5rem; }
+
+@media (max-width: 860px) {
+  .room-below { grid-template-columns: 1fr; gap: 1.5rem; }
+}

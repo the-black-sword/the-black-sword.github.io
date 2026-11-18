@@ -83,6 +83,9 @@
     "scriptorium":   { name: "The Scriptorium",       image: "room-scriptorium.webp",   about: "Where the essays are written. Until the room opens, the essays wait for you on Substack.", link: "https://theblacksword.substack.com" },
     "dragons-study": { name: "The Dragon’s Study", image: "room-dragons-study.webp", about: "The room where the fiction lives: The Laws of the Dragon, A Borrowed Season, and The Atavist." },
     "music":         { name: "The Music Room",        image: "room-music.webp",         about: "The playing life: the piano, the violin, and the music that keeps the house in tune." },
+    "conditions":    { name: "Tonight\u2019s Conditions", image: "room-observatory.webp", about: "Live readings from the BlackSword weather station, with tonight\u2019s cloud forecast and the Moon.", back: "observatory.html", backLabel: "Return to the Observatory" },
+    "observing-programs": { name: "Observing Programs", image: "room-observatory.webp", about: "Selenography and lunar librations, the planetary patrol, and variable stars of the Galactic Center and Orion.", back: "observatory.html", backLabel: "Return to the Observatory" },
+    "sn-baselines":  { name: "Baseline Observations", image: "sn-markarians-chain.webp", about: "The reference images of each galaxy, and blink comparisons that show how a new star is found.", back: "sn-hunt.html", backLabel: "Return to the Supernova Hunt" },
     "stoic-forum":   { name: "The Stoic Forum",       image: "room-stoic-forum.webp",   about: "The quiet room, for the philosophy that steadies the rest of the house." }
   };
   var nameEl = document.querySelector("[data-room-name]");
@@ -94,6 +97,10 @@
       nameEl.textContent = room.name;
       document.querySelector("[data-room-about]").textContent = room.about;
       document.querySelector(".room-view").style.backgroundImage = "url('" + room.image + "')";
+      if (room.back) {
+        var b = document.querySelector(".preparing [data-door]");
+        b.setAttribute("href", room.back); b.textContent = room.backLabel;
+      }
       if (room.link) {
         var a = document.createElement("a");
         a.className = "button-door"; a.href = room.link; a.textContent = "Read the essays on Substack";
