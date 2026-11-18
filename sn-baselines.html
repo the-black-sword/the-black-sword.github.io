@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Baseline Observations — The Star Croft</title>
+  <meta name="description" content="Baseline images of the galaxies in the BlackSword Observatory supernova hunt, each compared star for star with the Digitized Sky Survey.">
+  <meta property="og:title" content="Baseline Observations — The Star Croft">
+  <meta property="og:image" content="https://marcusaldenmeredith.com/share.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=3">
+</head>
+<body class="fade-in">
+  <div class="study">
+    <nav class="crumbs" aria-label="Where you are"><a href="entry.html">The Star Croft</a><span>&rsaquo;</span><a href="observatory.html">The Observatory</a><span>&rsaquo;</span><a href="sn-hunt.html">The Supernova Hunt</a><span>&rsaquo;</span>Baseline Observations</nav>
+    <header>
+      <p class="moniker">The Supernova Hunt</p>
+      <h1>Baseline Observations</h1>
+      <p class="lead">A supernova is found by comparison. Before a new star can be noticed, you need a good picture of how the galaxy looked without it. These are my baselines: the reference images every future night will be checked against.</p>
+    </header>
+    <main>
+      <h2>How the hunt works</h2>
+      <p class="note">Told with M101, the Pinwheel Galaxy, photographed on the night of May 11, 2026.</p>
+      <div class="steps">
+        <figure class="step">
+          <img src="baselines/m101-circle.webp" width="1600" height="1600" alt="M101 in the round eVscope view, with the telescope's caption along the edge" loading="lazy">
+          <span class="num">I</span><h3>The night&rsquo;s image</h3>
+          <p>The eVscope 2 stacks short exposures as it tracks. After thirty minutes, the Pinwheel is there in the round view the telescope delivers.</p>
+        </figure>
+        <figure class="step">
+          <img src="baselines/m101-frame.webp" alt="The full rectangular M101 frame, brightened to show faint stars" loading="lazy" style="object-fit:cover">
+          <span class="num">II</span><h3>The full frame, brightened</h3>
+          <p>The rectangular frame holds more sky than the circle. Stretching its brightness brings out the faint stars, which is where a new one would hide.</p>
+        </figure>
+        <figure class="step">
+          <img src="baselines/m101-dss.webp" alt="The same field of M101 in the Digitized Sky Survey" loading="lazy">
+          <span class="num">III</span><h3>The professional survey</h3>
+          <p>The Digitized Sky Survey photographed the whole sky from Palomar and Siding Spring on glass plates. Its image of the same field is the standard of comparison.</p>
+        </figure>
+        <figure class="step">
+          <img src="baselines/m101-ev.webp" alt="M101 frame turned and scaled to match the survey" loading="lazy">
+          <span class="num">IV</span><h3>The blink</h3>
+          <p>My frame is turned and scaled until its stars sit exactly on the survey&rsquo;s. Then the two are flicked back and forth. A star that appears in only one of them jumps out.</p>
+        </figure>
+      </div>
+      <p>Try it yourself. Drag the slider, or press <em>Blink</em>:</p>
+      <div class="blink">
+        <div class="blink-stage">
+          <img src="baselines/m101-ev.webp" width="1600" height="1603" alt="M101, the Pinwheel Galaxy, photographed with the eVscope 2 on May 11, 2026" loading="lazy">
+          <div class="blink-top"><img src="baselines/m101-dss.webp" width="1600" height="1603" alt="The same field in the Digitized Sky Survey" loading="lazy"></div>
+          <div class="blink-line" aria-hidden="true"></div>
+          <span class="blink-label l">My frame &middot; May 11, 2026</span>
+          <span class="blink-label r">Survey &middot; DSS2</span>
+        </div>
+        <div class="blink-controls">
+          <input type="range" min="0" max="100" value="50" aria-label="Slide between my frame and the survey image">
+          <button type="button" data-blink aria-pressed="false">Blink</button>
+        </div>
+      </div>
+      <p class="note">The survey goes deeper than my telescope, so it shows many faint stars that my frame does not. That is expected. What matters is the other direction: every star in my frame should also be in the survey. A star that appears only in my frame is a candidate.</p>
+      <p>For this page, the comparison was done by a program as well as by eye. It found each star in my frame, matched it to the survey, and listed anything left over. Every leftover was then checked by hand.</p>
+
+      <h2>The galaxies</h2>
+      <p class="note">Each galaxy has its own page, with the night&rsquo;s image, the blink comparison, and the verdict.</p>
+      <div class="cards sky-cards">
+        <a class="card sky" href="sn-m51.html">
+          <img src="baselines/m51-thumb.webp" width="560" height="560" alt="M51 as seen through the eVscope 2" loading="lazy">
+          <div class="body"><h3>M51</h3><p class="meta">Whirlpool Galaxy &middot; May 11, 2026</p><span class="tag">No new star</span></div>
+        </a>
+        <a class="card sky" href="sn-m61.html">
+          <img src="baselines/m61-thumb.webp" width="560" height="560" alt="M61 as seen through the eVscope 2" loading="lazy">
+          <div class="body"><h3>M61</h3><p class="meta">May 19, 2026</p><span class="tag">No new star</span></div>
+        </a>
+        <a class="card sky" href="sn-m63.html">
+          <img src="baselines/m63-thumb.webp" width="560" height="560" alt="M63 as seen through the eVscope 2" loading="lazy">
+          <div class="body"><h3>M63</h3><p class="meta">Sunflower Galaxy &middot; May 13, 2026</p><span class="tag">No new star</span></div>
+        </a>
+        <a class="card sky" href="sn-m66.html">
+          <img src="baselines/m66-thumb.webp" width="560" height="560" alt="M66 as seen through the eVscope 2" loading="lazy">
+          <div class="body"><h3>M66</h3><p class="meta">May 13, 2026</p><span class="tag">No new star</span></div>
+        </a>
+        <a class="card sky" href="sn-m81.html">
+          <img src="baselines/m81-thumb.webp" width="560" height="560" alt="M81 as seen through the eVscope 2" loading="lazy">
+          <div class="body"><h3>M81</h3><p class="meta">Bode&rsquo;s Galaxy &middot; May 11, 2026</p><span class="tag">No new star</span></div>
+        </a>
+        <a class="card sky" href="sn-m84.html">
+          <img src="baselines/m84-thumb.webp" width="560" height="560" alt="M84 as seen through the eVscope 2" loading="lazy">
+          <div class="body"><h3>M84</h3><p class="meta">May 14, 2026</p><span class="tag">No new star</span></div>
+        </a>
+        <a class="card sky" href="sn-m87.html">
+          <img src="baselines/m87-thumb.webp" width="560" height="560" alt="M87 as seen through the eVscope 2" loading="lazy">
+          <div class="body"><h3>M87</h3><p class="meta">Virgo A &middot; May 14, 2026</p><span class="tag">No new star</span></div>
+        </a>
+        <a class="card sky" href="sn-m89.html">
+          <img src="baselines/m89-thumb.webp" width="560" height="560" alt="M89 as seen through the eVscope 2" loading="lazy">
+          <div class="body"><h3>M89</h3><p class="meta">May 19, 2026</p><span class="tag">No new star</span></div>
+        </a>
+        <a class="card sky" href="sn-m90.html">
+          <img src="baselines/m90-thumb.webp" width="560" height="560" alt="M90 as seen through the eVscope 2" loading="lazy">
+          <div class="body"><h3>M90</h3><p class="meta">May 19, 2026</p><span class="tag dim">See note</span></div>
+        </a>
+        <a class="card sky" href="sn-m101.html">
+          <img src="baselines/m101-thumb.webp" width="560" height="560" alt="M101 as seen through the eVscope 2" loading="lazy">
+          <div class="body"><h3>M101</h3><p class="meta">Pinwheel Galaxy &middot; May 11, 2026</p><span class="tag">No new star</span></div>
+        </a>
+        <a class="card sky" href="sn-ngc4435.html">
+          <img src="baselines/ngc4435-thumb.webp" width="560" height="560" alt="NGC 4435 as seen through the eVscope 2" loading="lazy">
+          <div class="body"><h3>NGC 4435</h3><p class="meta">One of &ldquo;The Eyes&rdquo; &middot; May 14, 2026</p><span class="tag">No new star</span></div>
+        </a>
+        <a class="card sky" href="sn-ngc4461.html">
+          <img src="baselines/ngc4461-thumb.webp" width="560" height="560" alt="NGC 4461 as seen through the eVscope 2" loading="lazy">
+          <div class="body"><h3>NGC 4461</h3><p class="meta">May 19, 2026</p><span class="tag dim">See note</span></div>
+        </a>
+        <a class="card sky" href="sn-ngc4477.html">
+          <img src="baselines/ngc4477-thumb.webp" width="560" height="560" alt="NGC 4477 as seen through the eVscope 2" loading="lazy">
+          <div class="body"><h3>NGC 4477</h3><p class="meta">May 14, 2026</p><span class="tag">No new star</span></div>
+        </a>
+        <div class="card sky text-only"><div class="body"><h3>M83</h3><p class="meta">Southern Pinwheel</p><p>Survey reference only. M83 sits low in the south from Sacramento, and it is waiting for a clear night of its own.</p><span class="tag dim">Awaiting a night</span></div></div>
+      </div>
+      <p class="credit-line">Survey images: Digitized Sky Survey (DSS2 Red), Space Telescope Science Institute / NASA, from the Palomar Oschin and UK Schmidt telescopes; displayed through the CDS Aladin HiPS service. Telescope images &copy; 2026 Marcus Alden Meredith, taken with a Unistellar eVscope 2.</p>
+    </main>
+  </div>
+
+  <p class="page-foot">&copy; 2026 Marcus Alden Meredith &middot; <a href="entry.html">The Entry Hall</a> &middot; <a href="index.html">The Threshold</a></p>
+  <script src="house.js?v=3"></script>
+</body>
+</html>

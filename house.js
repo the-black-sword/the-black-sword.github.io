@@ -5,6 +5,7 @@
    3. On touch screens: first tap shows the label, second tap enters.
    4. The guest book opens Substack's sign-up form.
    5. The "being prepared" page shows whichever room you chose.
+   6. The blink comparator: drag to compare two images, or let them blink.
    ========================================================== */
 
 (function () {
@@ -110,4 +111,23 @@
       }
     }
   }
+  /* ---------- 6. The blink comparator ---------- */
+  document.querySelectorAll(".blink").forEach(function (b) {
+    var range = b.querySelector("input[type=range]");
+    var top = b.querySelector(".blink-top");
+    var line = b.querySelector(".blink-line");
+    var btn = b.querySelector("[data-blink]");
+    var timer = null;
+    function set(v) { top.style.clipPath = "inset(0 0 0 " + v + "%)"; line.style.left = v + "%"; line.style.opacity = (v <= 0 || v >= 100) ? 0 : 1; }
+    function stop() { if (timer) { clearInterval(timer); timer = null; btn.textContent = "Blink"; btn.setAttribute("aria-pressed", "false"); } }
+    range.addEventListener("input", function () { stop(); set(range.value); });
+    set(range.value);
+    btn.addEventListener("click", function () {
+      if (timer) { stop(); set(range.value); return; }
+      var on = false;
+      set(100);
+      timer = setInterval(function () { on = !on; set(on ? 0 : 100); }, 700);
+      btn.textContent = "Stop"; btn.setAttribute("aria-pressed", "true");
+    });
+  });
 })();

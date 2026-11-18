@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>M66 — The Star Croft</title>
+  <meta name="description" content="Baseline observation of M66 for the BlackSword Observatory supernova hunt, compared with the Digitized Sky Survey.">
+  <meta property="og:title" content="M66 — The Star Croft">
+  <meta property="og:image" content="https://marcusaldenmeredith.com/share.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=3">
+</head>
+<body class="fade-in">
+  <div class="study">
+    <nav class="crumbs" aria-label="Where you are"><a href="entry.html">The Star Croft</a><span>&rsaquo;</span><a href="sn-hunt.html">The Supernova Hunt</a><span>&rsaquo;</span><a href="sn-baselines.html">Baseline Observations</a><span>&rsaquo;</span>M66</nav>
+    <header>
+      <p class="moniker">Baseline Observations</p>
+      <h1>M66</h1>
+      
+    </header>
+    <main>
+      <div class="obs-grid">
+        <figure><img src="baselines/m66-circle.webp" width="1600" height="1600" alt="M66 in the round eVscope view, May 13, 2026"><figcaption>The night&rsquo;s image as the eVscope 2 delivered it.</figcaption></figure>
+        <div>
+          <dl class="facts"><dt>Constellation</dt><dd>Leo</dd><dt>Observed</dt><dd>May 13, 2026</dd><dt>Exposure</dt><dd>20 minutes, stacked</dd><dt>Telescope</dt><dd>Unistellar eVscope 2</dd></dl>
+          <div class="verdict"><span class="tag">No new star</span>
+            <p>No new star. Fifty-three stars matched the survey one for one.</p><p>One small point has no partner, but it is sharper than every real star in the image, the mark of a hot pixel. A handful of fainter smudges sit at the level of the noise.</p>
+          </div>
+        </div>
+      </div>
+      <h2>The blink</h2>
+      <p class="note">Drag the slider or press Blink to compare my frame with the survey.</p>
+      <div class="blink">
+        <div class="blink-stage">
+          <img src="baselines/m66-ev.webp" width="1600" height="1644" alt="M66, photographed with the eVscope 2 on May 13, 2026" loading="lazy">
+          <div class="blink-top"><img src="baselines/m66-dss.webp" width="1600" height="1644" alt="The same field in the Digitized Sky Survey" loading="lazy"></div>
+          <div class="blink-line" aria-hidden="true"></div>
+          <span class="blink-label l">My frame &middot; May 13, 2026</span>
+          <span class="blink-label r">Survey &middot; DSS2</span>
+        </div>
+        <div class="blink-controls">
+          <input type="range" min="0" max="100" value="50" aria-label="Slide between my frame and the survey image">
+          <button type="button" data-blink aria-pressed="false">Blink</button>
+        </div>
+      </div>
+      <p class="credit-line">Survey images: Digitized Sky Survey (DSS2 Red), Space Telescope Science Institute / NASA, from the Palomar Oschin and UK Schmidt telescopes; displayed through the CDS Aladin HiPS service.</p>
+      <nav class="pager" aria-label="Other galaxies"><a href="sn-m63.html">&larr; M63</a><a href="sn-baselines.html">All baselines</a><a href="sn-m81.html">M81 &rarr;</a></nav>
+    </main>
+  </div>
+
+  <p class="page-foot">&copy; 2026 Marcus Alden Meredith &middot; <a href="entry.html">The Entry Hall</a> &middot; <a href="index.html">The Threshold</a></p>
+  <script src="house.js?v=3"></script>
+</body>
+</html>
