@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tonight's Conditions — The Star Croft</title>
+  <meta name="description" content="Live observing conditions from the BlackSword weather station in Sacramento: dew point, humidity, wind, pressure, tonight's cloud forecast and the Moon.">
+  <meta property="og:title" content="Tonight's Conditions — The Star Croft">
+  <meta property="og:image" content="https://marcusaldenmeredith.com/share.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=5">
+</head>
+<body class="fade-in">
+
+<style>
+  .cond-status { color: var(--gold-dim); font-style: italic; font-size: 0.95rem; margin: -0.4rem 0 1.2rem; }
+  .verdict-box { border: 1px solid var(--gold-dim); background: rgba(23,19,13,0.75); padding: 1.2rem 1.4rem; margin: 0 0 1.4rem;
+    display: grid; grid-template-columns: 1fr auto; gap: 1rem; align-items: center; }
+  .verdict-box .label { font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-dim); }
+  .verdict-box .title { font-size: 2rem; line-height: 1.1; margin: 0.2rem 0 0.3rem; }
+  .verdict-box .stars { font-size: 1.6rem; letter-spacing: 0.1em; color: var(--gold); white-space: nowrap; }
+  .verdict-box .stars .off { color: rgba(201,162,74,0.22); }
+  .v-excellent { color: #8fcf9f; } .v-good { color: var(--gold-bright); } .v-fair { color: #d9a066; } .v-poor { color: #d98080; }
+  .alerts { display: grid; gap: 0.5rem; margin: 0 0 1.4rem; }
+  .alert { border-left: 3px solid var(--gold); background: rgba(23,19,13,0.6); padding: 0.6rem 1rem; }
+  .alert.dew { border-color: #6f8fc9; } .alert.wind { border-color: #d9a066; } .alert.rain { border-color: #6aa9b8; } .alert.good { border-color: #6fae7f; }
+  .readings { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 0;
+    border: 1px solid rgba(201,162,74,0.25); margin: 0.6rem 0 1.4rem; }
+  .reading { background: var(--black); padding: 0.9rem 1rem; outline: 1px solid rgba(201,162,74,0.2); }
+  .reading .k { font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold-dim); }
+  .reading .v { font-size: 1.7rem; color: var(--cream); line-height: 1.15; }
+  .reading .v small { font-size: 0.9rem; color: var(--gold-dim); margin-left: 0.15rem; }
+  .reading .n { font-size: 0.9rem; font-style: italic; color: var(--gold-dim); }
+  .factors { display: grid; gap: 0.5rem; margin: 0.6rem 0 1.4rem; }
+  .factor { display: grid; grid-template-columns: 11rem 1fr 9rem; gap: 1rem; align-items: center; }
+  .factor .bar { height: 4px; background: rgba(201,162,74,0.15); }
+  .factor .bar span { display: block; height: 100%; }
+  .factor .r { text-align: right; font-size: 0.95rem; }
+  .clouds { display: flex; gap: 3px; align-items: flex-end; height: 110px; margin: 0.8rem 0 0.2rem; }
+  .clouds .h { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; height: 100%; }
+  .clouds .h b { display: block; width: 100%; background: linear-gradient(#cfc6b0, #8d8571); min-height: 2px; }
+  .clouds .h i { font-style: normal; font-size: 0.7rem; color: var(--gold-dim); margin-top: 0.25rem; }
+  .moon-box { display: grid; grid-template-columns: 130px 1fr; gap: 1.6rem; align-items: center; border: 1px solid rgba(201,162,74,0.25);
+    background: rgba(23,19,13,0.6); padding: 1.2rem 1.4rem; margin: 0.6rem 0 1.4rem; }
+  .moon-box .phase { font-size: 1.5rem; color: var(--cream); }
+  .moon-box .illum { color: var(--gold); }
+  @media (max-width: 600px) {
+    .verdict-box { grid-template-columns: 1fr; } .factor { grid-template-columns: 1fr; gap: 0.25rem; } .factor .r { text-align: left; }
+    .moon-box { grid-template-columns: 1fr; justify-items: center; text-align: center; } .clouds .h i { font-size: 0.6rem; }
+  }
+</style>
+  <div class="study">
+    <nav class="crumbs" aria-label="Where you are"><a href="entry.html">The Star Croft</a><span>&rsaquo;</span><a href="observatory.html">The Observatory</a><span>&rsaquo;</span>Tonight&rsquo;s Conditions</nav>
+    <header>
+      <p class="moniker">The Observatory</p>
+      <h1>Tonight&rsquo;s Conditions</h1>
+      <p class="lead">Live readings from the BlackSword weather station in Sacramento, read the way an observer reads them: will the optics dew over, will the air hold steady, and how bright is the Moon?</p>
+    </header>
+    <main>
+      <p class="cond-status" id="status">Consulting the station&hellip;</p>
+      <div class="verdict-box" id="verdict" aria-live="polite"></div>
+      <div class="alerts" id="alerts"></div>
+
+      <h2>Tonight&rsquo;s clouds</h2>
+      <div class="clouds" id="clouds" aria-label="Hourly cloud cover forecast"></div>
+      <p class="note" id="clouds-note">Loading the cloud forecast&hellip;</p>
+
+      <h2>The Moon</h2>
+      <div class="moon-box">
+        <canvas id="moon-canvas" width="120" height="120" aria-label="The Moon's current phase"></canvas>
+        <div>
+          <div class="phase" id="moon-phase"></div>
+          <div class="illum" id="moon-illum"></div>
+          <div class="note" id="moon-next"></div>
+          <p style="margin:0.5rem 0 0" id="moon-impact"></p>
+        </div>
+      </div>
+
+      <h2>At the station</h2>
+      <div class="readings" id="readings"></div>
+
+      <h2>How the verdict is reached</h2>
+      <p class="note">Four readings are scored and averaged. The dew point spread (air temperature minus dew point) matters most for the optics: below about 8&deg;F, glass begins to fog.</p>
+      <div class="factors" id="factors"></div>
+
+      <p style="margin-top:1.6rem"><button type="button" class="button-door" id="refresh">Refresh the readings</button></p>
+      <p class="credit-line">Station data: Ambient Weather Network, station BlackSword, refreshed about once a minute. Cloud forecast: <a href="https://open-meteo.com/">Open-Meteo</a>. The Moon is calculated from the date.</p>
+    </main>
+  </div>
+
+<script>
+(function () {
+  var STATION = "https://blacksword-weather.blkswrd.workers.dev/";
+  // Cloud forecast for central Sacramento (city-level coordinates only), from Open-Meteo
+  var CLOUDS = "https://api.open-meteo.com/v1/forecast?latitude=38.58&longitude=-121.49&hourly=cloud_cover&forecast_days=2&timezone=America%2FLos_Angeles";
+  function $(id) { return document.getElementById(id); }
+  function f(v, d) { return (v === undefined || v === null) ? "&mdash;" : Number(v).toFixed(d === undefined ? 1 : d); }
+  function compass(deg) { if (deg == null) return "&mdash;"; return ["N","NNE","NE","ENE","E","ESE","SE","SSE","S","SSW","SW","WSW","W","WNW","NW","NNW"][Math.round(deg / 22.5) % 16]; }
+  function rate(v, steps) { for (var i = 0; i < steps.length; i++) if (steps[i][0](v)) return steps[i][1]; }
+  var R = { ex: [4, "Excellent", "v-excellent", "#6fae7f", 100], gd: [3, "Good", "v-good", "#c9a24a", 75],
+            fa: [2, "Fair", "v-fair", "#d9a066", 50], po: [1, "Poor", "v-poor", "#d98080", 25], vp: [0, "Very poor", "v-poor", "#d98080", 10] };
+
+  function moon(date) {
+    var SYN = 29.53058867, ref = Date.UTC(2000, 0, 6, 18, 14);
+    var age = (((date - ref) / 864e5) % SYN + SYN) % SYN, fr = age / SYN;
+    var illum = Math.round((1 - Math.cos(2 * Math.PI * fr)) / 2 * 100);
+    var names = ["New Moon","Waxing Crescent","First Quarter","Waxing Gibbous","Full Moon","Waning Gibbous","Last Quarter","Waning Crescent"];
+    var name = names[Math.floor(((fr + 0.0625) % 1) * 8)];
+    return { age: age, fr: fr, illum: illum, name: name,
+      toFull: (fr < 0.5 ? 0.5 - fr : 1.5 - fr) * SYN, toNew: (1 - fr) * SYN };
+  }
+  function drawMoon(c, fr, illum) {
+    var x = c.getContext("2d"), W = c.width, cx = W / 2, cy = W / 2, r = W / 2 - 4;
+    var g = x.createRadialGradient(cx - r * 0.1, cy - r * 0.1, r * 0.1, cx, cy, r);
+    g.addColorStop(0, "#f0e8c0"); g.addColorStop(0.5, "#d4c480"); g.addColorStop(1, "#8a7030");
+    var dark = "#0d0b08";
+    x.clearRect(0, 0, W, W);
+    x.beginPath(); x.arc(cx, cy, r, 0, 2 * Math.PI); x.fillStyle = dark; x.fill();
+    x.beginPath();
+    if (fr < 0.5) x.arc(cx, cy, r, -Math.PI / 2, Math.PI / 2, false); else x.arc(cx, cy, r, Math.PI / 2, -Math.PI / 2, false);
+    x.closePath(); x.fillStyle = g; x.fill();
+    x.beginPath(); x.ellipse(cx, cy, r * Math.abs(Math.cos(2 * Math.PI * fr)), r, 0, 0, 2 * Math.PI);
+    x.fillStyle = illum > 50 ? g : dark; x.fill();
+    x.beginPath(); x.arc(cx, cy, r, 0, 2 * Math.PI); x.strokeStyle = "rgba(201,162,74,0.35)"; x.lineWidth = 1; x.stroke();
+  }
+  function renderMoon() {
+    var m = moon(new Date());
+    var impact = m.illum < 15 ? "Dark skies: lunar interference is minimal. A night for galaxies and the supernova hunt."
+      : m.illum < 40 ? "Moderate moonlight. Faint targets are best after moonset; bright objects and variable stars are fine all night."
+      : m.illum < 70 ? "Significant moonlight washes out faint galaxies and nebulae. A night for the planets, double stars and the Moon itself."
+      : "The Moon is near full: deep-sky work will be badly compromised. An excellent night for selenography.";
+    $("moon-phase").textContent = m.name;
+    $("moon-illum").textContent = "Illumination " + m.illum + "% · Age " + m.age.toFixed(1) + " days";
+    $("moon-next").innerHTML = "Next full Moon in <b>" + m.toFull.toFixed(1) + " days</b> · next new Moon in <b>" + m.toNew.toFixed(1) + " days</b>";
+    $("moon-impact").textContent = impact;
+    drawMoon($("moon-canvas"), m.fr, m.illum);
+  }
+
+  function renderStation(d) {
+    var t = d.tempf, dp = d.dewPoint, spread = (t != null && dp != null) ? t - dp : null;
+    var rs = [
+      spread == null ? null : ["Dew point spread", spread, f(spread) + "&deg;F margin", rate(spread, [[function(v){return v>=20},R.ex],[function(v){return v>=15},R.gd],[function(v){return v>=10},R.fa],[function(v){return v>=5},R.po],[function(){return true},R.vp]])],
+      d.humidity == null ? null : ["Humidity", d.humidity, f(d.humidity, 0) + "%", rate(d.humidity, [[function(v){return v<40},R.ex],[function(v){return v<60},R.gd],[function(v){return v<75},R.fa],[function(v){return v<88},R.po],[function(){return true},R.vp]])],
+      d.windspeedmph == null ? null : ["Surface wind", d.windspeedmph, f(d.windspeedmph) + " mph", rate(d.windspeedmph, [[function(v){return v<3},R.ex],[function(v){return v<7},R.gd],[function(v){return v<12},R.fa],[function(v){return v<20},R.po],[function(){return true},R.vp]])],
+      d.baromrelin == null ? null : ["Barometric pressure", d.baromrelin, f(d.baromrelin, 2) + " inHg", rate(d.baromrelin, [[function(v){return v>=30.1},R.ex],[function(v){return v>=29.8},R.gd],[function(v){return v>=29.5},R.fa],[function(){return true},R.po]])]
+    ].filter(Boolean);
+    var avg = rs.reduce(function (a, r) { return a + r[3][0]; }, 0) / (rs.length || 1);
+    var V = avg >= 3.5 ? [5, "Excellent", "v-excellent", "Near-perfect conditions: a night for demanding work, from photometry to fine planetary detail."]
+      : avg >= 2.7 ? [4, "Good", "v-good", "Solid conditions. All observing programmes can go ahead; watch the dew point as the night cools."]
+      : avg >= 1.8 ? [3, "Fair", "v-fair", "Acceptable for wider-field work: binocular surveys, bright deep-sky objects, naked-eye targets."]
+      : avg >= 1.0 ? [2, "Poor", "v-poor", "Challenging conditions. Casual observing only; check again later in the night."]
+      : [1, "Inadvisable", "v-poor", "Unfavourable conditions, with a real risk of dew on the optics. A night for the logbook."];
+    var stars = ""; for (var i = 0; i < 5; i++) stars += i < V[0] ? "★" : '<span class="off">★</span>';
+    $("verdict").innerHTML = '<div><div class="label">Tonight&rsquo;s observing conditions at the station</div><div class="title ' + V[2] + '">' + V[1] +
+      '</div><div><em>' + V[3] + '</em></div></div><div class="stars" aria-label="' + V[0] + ' of 5">' + stars + '</div>';
+
+    var al = [];
+    if (spread != null && spread < 8) al.push(["dew", "<strong>Dew alert.</strong> The dew point spread is only " + f(spread) + "&deg;F. Exposed optics will fog without dew shields or heaters."]);
+    if (d.hourlyrainin > 0) al.push(["rain", "<strong>Rain falling now:</strong> " + f(d.hourlyrainin, 2) + " in this hour."]);
+    else if (d.dailyrainin > 0) al.push(["rain", "<strong>Rain today:</strong> " + f(d.dailyrainin, 2) + " in. Expect damp air tonight."]);
+    if (d.windgustmph > 15) al.push(["wind", "<strong>Gusty:</strong> " + f(d.windgustmph) + " mph gusts will shake long exposures."]);
+    if (!al.length && V[0] >= 4) al.push(["good", "No adverse conditions at the station."]);
+    $("alerts").innerHTML = al.map(function (a) { return '<div class="alert ' + a[0] + '">' + a[1] + "</div>"; }).join("");
+
+    var cells = [
+      ["Temperature", f(t), "&deg;F", "Feels like " + f(d.feelsLike) + "&deg;F"],
+      ["Dew point", f(dp), "&deg;F", "Spread " + (spread == null ? "&mdash;" : f(spread) + "&deg;F")],
+      ["Humidity", f(d.humidity, 0), "%", ""],
+      ["Pressure", f(d.baromrelin, 2), "inHg", ""],
+      ["Wind", f(d.windspeedmph), "mph", "Gusts " + f(d.windgustmph) + " mph"],
+      ["Wind from", compass(d.winddir), "", f(d.winddir, 0) + "&deg;"],
+      ["Rain today", f(d.dailyrainin, 2), "in", "This hour " + f(d.hourlyrainin, 2) + " in"],
+      ["Sunlight", f(d.solarradiation, 0), "W/m&sup2;", "UV index " + (d.uv == null ? "&mdash;" : d.uv)]
+    ];
+    $("readings").innerHTML = cells.map(function (c) {
+      return '<div class="reading"><div class="k">' + c[0] + '</div><div class="v">' + c[1] + (c[2] ? "<small>" + c[2] + "</small>" : "") +
+        '</div><div class="n">' + c[3] + "</div></div>"; }).join("");
+    $("factors").innerHTML = rs.map(function (r) {
+      return '<div class="factor"><div>' + r[0] + '</div><div class="bar"><span style="width:' + r[3][4] + "%;background:" + r[3][3] +
+        '"></span></div><div class="r ' + r[3][2] + '">' + r[3][1] + ' <span class="note">(' + r[2] + ")</span></div></div>"; }).join("");
+    $("status").textContent = d.dateutc ? "Last reading: " + new Date(d.dateutc).toLocaleString("en-US",
+      { weekday: "long", month: "long", day: "numeric", hour: "numeric", minute: "2-digit", timeZone: "America/Los_Angeles", timeZoneName: "short" }) : "Live";
+  }
+
+  function loadStation() {
+    $("status").textContent = "Consulting the station…";
+    fetch(STATION, { cache: "no-store" }).then(function (r) { if (!r.ok) throw 0; return r.json(); })
+      .then(function (j) { renderStation(j.readings || {}); })
+      .catch(function () { $("status").textContent = "The station is not answering just now. Please try again in a few minutes."; });
+  }
+  function loadClouds() {
+    fetch(CLOUDS).then(function (r) { return r.json(); }).then(function (j) {
+      var T = j.hourly.time, C = j.hourly.cloud_cover, now = new Date(), out = [];
+      var start = new Date(now); start.setHours(18, 0, 0, 0); if (now.getHours() >= 6 && now.getHours() < 18) {} else if (now.getHours() < 6) start.setDate(start.getDate() - 1);
+      for (var i = 0; i < T.length; i++) { var t = new Date(T[i]); if (t >= start && out.length < 13) out.push([t, C[i]]); }
+      if (!out.length) throw 0;
+      $("clouds").innerHTML = out.map(function (p) {
+        var h = p[0].getHours(), lbl = (h % 12 || 12) + (h < 12 ? "a" : "p");
+        return '<div class="h" title="' + lbl + ": " + p[1] + '% cloud"><b style="height:' + Math.max(2, p[1]) + '%"></b><i>' + lbl + "</i></div>"; }).join("");
+      var avg = out.reduce(function (a, p) { return a + p[1]; }, 0) / out.length;
+      $("clouds-note").textContent = "Forecast cloud cover over Sacramento, 6 p.m. to 6 a.m.: about " + Math.round(avg) + "% on average. Taller bars mean more cloud.";
+    }).catch(function () { $("clouds-note").textContent = "The cloud forecast is unavailable just now."; });
+  }
+  renderMoon(); loadStation(); loadClouds();
+  $("refresh").addEventListener("click", function () { loadStation(); loadClouds(); });
+})();
+</script>
+  <p class="page-foot">&copy; 2026 Marcus Alden Meredith &middot; <a href="entry.html">The Entry Hall</a> &middot; <a href="index.html">The Threshold</a></p>
+  <script src="house.js?v=5"></script>
+</body>
+</html>
