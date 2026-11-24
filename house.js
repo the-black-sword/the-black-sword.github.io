@@ -6,6 +6,7 @@
    4. The guest book opens Substack's sign-up form.
    5. The "being prepared" page shows whichever room you chose.
    6. The blink comparator: drag to compare two images, or let them blink.
+   7. Search within a Library shelf.
    ========================================================== */
 
 (function () {
@@ -128,6 +129,14 @@
       set(100);
       timer = setInterval(function () { on = !on; set(on ? 0 : 100); }, 700);
       btn.textContent = "Stop"; btn.setAttribute("aria-pressed", "true");
+    });
+  });
+  /* ---------- 7. Search within a shelf's catalogue ---------- */
+  document.querySelectorAll("[data-catalogue-search]").forEach(function (box) {
+    var rows = document.querySelectorAll(box.getAttribute("data-catalogue-search") + " tbody tr");
+    box.addEventListener("input", function () {
+      var q = box.value.toLowerCase();
+      rows.forEach(function (r) { r.style.display = r.textContent.toLowerCase().indexOf(q) === -1 ? "none" : ""; });
     });
   });
 })();

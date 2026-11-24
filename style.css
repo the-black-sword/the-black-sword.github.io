@@ -392,3 +392,42 @@ nav.pager { display: flex; justify-content: space-between; gap: 1rem; margin-top
   .cards.sky-cards { grid-template-columns: 1fr 1fr; gap: 0.8rem; }
   .card.sky .body { padding: 0.6rem 0.7rem 0.8rem; }
 }
+
+/* ==========================================================
+   THE LIBRARY AND THE SCRIPTORIUM
+   ========================================================== */
+.room-view-wrap.portrait { aspect-ratio: 1122 / 1402; max-width: 560px; }
+.shelf-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 0.9rem; margin: 1rem 0 1.5rem; }
+.shelf-card { display: block; text-decoration: none; color: var(--cream); padding: 0.9rem 1rem; background: rgba(23,19,13,0.75);
+  border: 1px solid rgba(201,162,74,0.25); transition: border-color 0.3s, transform 0.3s; }
+.shelf-card:hover, .shelf-card:focus-visible { border-color: var(--gold-bright); transform: translateY(-2px); color: var(--cream); }
+.shelf-card h3 { font-weight: 500; color: var(--gold-bright); font-size: 1.15rem; line-height: 1.2; }
+.shelf-card p { font-size: 0.95rem; margin: 0.25rem 0 0.4rem; opacity: 0.9; }
+.shelf-card .count { font-size: 0.85rem; color: var(--gold); font-style: italic; }
+.picks { list-style: none; margin: 1rem 0 2rem; counter-reset: pick; }
+.picks li { border-left: 2px solid var(--gold-dim); padding: 0.15rem 0 0.15rem 1.1rem; margin: 0 0 1.2rem; }
+.picks h3 { font-weight: 500; color: var(--gold-bright); font-size: 1.15rem; line-height: 1.25; }
+.picks .by { color: var(--gold); font-style: italic; font-size: 0.95rem; margin: 0.1rem 0 0.35rem; }
+.picks p { margin: 0; }
+details.catalogue { margin: 1.5rem 0; border-top: 1px solid rgba(201,162,74,0.25); padding-top: 0.8rem; }
+details.catalogue summary { cursor: pointer; color: var(--gold-bright); font-size: 1.15rem; }
+details.catalogue summary:hover { color: var(--cream); }
+.catalogue-search { width: 100%; max-width: 26rem; font: inherit; font-size: 1rem; margin: 0.8rem 0 0.4rem; padding: 0.35rem 0.6rem;
+  background: rgba(11,10,8,0.8); color: var(--cream); border: 1px solid var(--gold-dim); }
+table.ledger.compact td { padding: 0.3rem 0.6rem; font-size: 0.98rem; }
+.front-desk { border: 1px solid var(--gold-dim); background: rgba(23,19,13,0.75); padding: 1rem 1.2rem; margin: 1rem 0; }
+.theme { margin: 0 0 1.8rem; }
+.theme > p { color: var(--cream); opacity: 0.85; font-style: italic; margin-bottom: 0.4rem; }
+ul.essays { list-style: none; margin: 0.4rem 0 0; }
+ul.essays li { padding: 0.35rem 0; border-bottom: 1px solid rgba(201,162,74,0.12); display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+ul.essays li a { font-size: 1.08rem; }
+ul.essays li span { color: var(--gold-dim); font-size: 0.9rem; font-style: italic; white-space: nowrap; }
+.scriptorium-top { display: grid; grid-template-columns: minmax(0, 560px) 1fr; gap: 2.2rem; align-items: start; max-width: 1150px; margin: 0 auto; }
+blockquote.cq { margin: 1.4rem 0; padding: 0.2rem 0 0.2rem 1.2rem; border-left: 2px solid var(--gold); }
+blockquote.cq p { font-size: 1.25rem; font-style: italic; line-height: 1.45; margin: 0; max-width: 42rem; }
+blockquote.cq footer { color: var(--gold); font-size: 0.98rem; margin-top: 0.4rem; }
+blockquote.cq .note { display: block; font-size: 0.9rem; margin-top: 0.2rem; }
+@media (max-width: 860px) { .scriptorium-top { grid-template-columns: 1fr; } .room-view-wrap.portrait { margin: 0 auto; } }
+@media (max-width: 600px) { .shelf-grid { grid-template-columns: 1fr 1fr; gap: 0.6rem; } .shelf-card { padding: 0.7rem; } .shelf-card p { display: none; } }
+.scriptorium-top .intro p { margin-bottom: 0.9rem; }
+.scriptorium-top .intro .lead { font-style: italic; font-size: 1.25rem; color: var(--gold-bright); }
