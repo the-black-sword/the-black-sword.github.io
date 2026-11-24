@@ -20,8 +20,10 @@
   }
   document.querySelectorAll("[data-door]").forEach(function (door) {
     door.addEventListener("click", function (e) {
+      var href = door.getAttribute("href");
+      if (href && href.charAt(0) === "#") return;
       e.preventDefault();
-      walkThrough(door.getAttribute("href"));
+      walkThrough(href);
     });
   });
   // If a visitor comes back with the browser's Back button, undo the fade
@@ -53,6 +55,7 @@
         }
         if (spot.hasAttribute("data-guestbook")) return; // handled below
         var href = spot.getAttribute("href");
+        if (href && href.charAt(0) === "#") return; // a spot on this same page: just scroll there
         if (href && href.indexOf("http") !== 0) { e.preventDefault(); walkThrough(href); }
       });
     });
